@@ -42,8 +42,6 @@ class RequestHandler(private val validator: Validator) {
             block: (Mono<BODY>) -> Mono<ServerResponse>,
             request: ServerRequest, bodyClass: Class<BODY>): Mono<ServerResponse> {
 
-        println(validator)
-
         return request
                 .bodyToMono(bodyClass)
                 .flatMap { body ->
